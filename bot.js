@@ -25,7 +25,7 @@ const initServer = () => {
         console.log("Client successfully connected")
         ws.on("message", msg => {
             msg = Buffer.from(msg);
-            let offset = 0;
+            let offset = 1;
             switch (msg.readUInt8(offset++)) {
                 case 0:
                     {
@@ -49,7 +49,7 @@ const initServer = () => {
                         while ((byte = msg.readUInt8(offset++)) != 0) {
                             token += String.fromCharCode(byte);
                         }
-                        gottokens++
+                        gottokens += 2;
                         bots[botID].sendRecaptcha(token);
                         //recaptchaTokens.addToken(token);
                     } break;
